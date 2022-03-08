@@ -1,0 +1,24 @@
+# This file allows you to configure Airflow Connections, Pools, and Variables in a single place for local development only.
+# NOTE: If putting a dict in conn_extra, please wrap in single quotes.
+
+# For more information, refer to our docs: https://www.astronomer.io/docs/cloud/stable/develop/customize-image#configure-airflowsettingsyaml
+# For issues or questions, reach out to support@astronomer.io
+
+airflow:
+  connections:
+    - conn_id: sftp_default
+      conn_type: sftp
+      conn_host: <INSERT YOUR SSH SERVER HOST>
+      conn_schema: ''
+      conn_login: <INSERT YOUR SSH SERVER LOGIN>
+      conn_password: null
+      conn_port: null
+      conn_extra: '{"private_key": "<INSERT-YOUR-ESCAPED-PRIVATE-KEY>", "no_host_key_check": "false",
+    "host_key": "<INSERT-YOUR-BASE64-ENCODED-RSA-KEY>"}'
+  pools:
+    - pool_name:
+      pool_slot:
+      pool_description:
+  variables:
+    - variable_name:
+      variable_value:
