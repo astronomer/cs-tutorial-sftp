@@ -33,10 +33,10 @@ with DAG(
 
     start, finish = [DummyOperator(task_id=task_id) for task_id in ['start', 'finish']]
 
-    add_to_known_hosts = BashOperator(
-        task_id='add_to_known_hosts',
-        bash_command='ssh-keyscan {{ conn.sftp_default.host }} > /home/astro/.ssh/known_hosts'
-    )
+    # add_to_known_hosts = BashOperator(
+    #     task_id='add_to_known_hosts',
+    #     bash_command='ssh-keyscan {{ conn.sftp_default.host }} > /home/astro/.ssh/known_hosts'
+    # )
 
     with TaskGroup('sftp') as tg1:
         sftp_hook_example = PythonOperator(
@@ -67,4 +67,4 @@ with DAG(
 
         sftp_hook_example >> [sftp_sensor_example, sftp_operator_example]
 
-    start >> add_to_known_hosts >> tg1 >> finish
+    start >> tg1 >> finish

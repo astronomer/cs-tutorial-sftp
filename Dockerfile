@@ -12,4 +12,4 @@ RUN mkdir -p /tmp/single-file
 RUN echo "Hello World!" > /tmp/single-file/test-file.txt
 RUN mkdir /home/astro/.ssh
 
-#RUN ssh-keyscan -H <YOUR-HOST> > /home/astro/.ssh/known_hosts #added this as a bashoperator but it adds the fingerprint necessary to run sftp components
+RUN ssh-keyscan -H 	<ADD-SFTP-IP-ADDRESS> > /home/astro/.ssh/known_hosts
